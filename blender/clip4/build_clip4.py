@@ -9,7 +9,7 @@ Usage:
     blender -b --python blender/clip4/build_clip4.py
 
 Writes shot_4a.blend ... shot_4e.blend next to this script. Frame numbers
-are global to the film (clips.md): 4a = 1681-1872, 4b = 1873-2040,
+are global to the film (docs/clips.md): 4a = 1681-1872, 4b = 1873-2040,
 4c = 2041-2184, 4d = 2185-2352, 4e = 2353-2640.
 """
 

@@ -8,7 +8,7 @@ Usage:
     blender -b --python blender/clip3/build_clip3.py
 
 Writes shot_3a.blend, shot_3b.blend and shot_3c.blend next to this script.
-Frame numbers are global to the film (clips.md): 3a = 1081-1320,
+Frame numbers are global to the film (docs/clips.md): 3a = 1081-1320,
 3b = 1321-1488, 3c = 1489-1680.
 """
 

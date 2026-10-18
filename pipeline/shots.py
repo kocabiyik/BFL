@@ -1,7 +1,7 @@
 """Shot list for the film: "Perseverance", Earth to Mars in eight shots.
 
 One source of truth for keyframes.py (Klein + nsc7 LoRA) and video.py
-(FLUX 3 video). Story and timing are in shots.md.
+(FLUX 3 video). Story and timing are in docs/shots.md.
 
 Each shot has:
   key:       start keyframe. Either a text prompt ("prompt") written like the

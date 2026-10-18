@@ -5,13 +5,14 @@ Usage:
     python pipeline/keyframes.py --lora nsc7-style-lora_000001500.safetensors
     python pipeline/keyframes.py --lora ... --only 08_rover 06_skycrane
     python pipeline/keyframes.py --base            # no LoRA, for comparison
+    python pipeline/keyframes.py --v2 --lora ...   # v2 shot list -> out/v2/keyframes
 
 Text keyframes use the shot prompt as written (content only, like the
 training captions) plus the trigger. Edit keyframes (rover consistency) run
 the instruction and the reference frame through the prompt upsampler, drop
 its opening medium sentence, and end the caption with the trigger.
 
-Writes out/keyframes/<shot>_start.png, <shot>_end.png and prompts.json.
+Writes out/keyframes/ (or out/v2/keyframes/) <shot>_start.png, <shot>_end.png and prompts.json.
 """
 
 import argparse
@@ -22,8 +23,6 @@ import re
 import torch
 from diffusers import ModularPipeline
 from PIL import Image
-
-from shots import SHOTS, TRIGGER
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Distilled: 16 steps, no guidance. Base (what the LoRA was trained on) is
@@ -44,8 +43,14 @@ parser.add_argument("--base", action="store_true", help="no LoRA")
 parser.add_argument("--model", choices=MODELS, default="distilled")
 parser.add_argument("--seed", type=int, default=1975)
 parser.add_argument("--only", nargs="*", help="shot ids to (re)generate")
-parser.add_argument("--out", default=os.path.join(ROOT, "out", "keyframes"))
+parser.add_argument("--v2", action="store_true", help="shots_v2 (18 shots)")
+parser.add_argument("--out")
 args = parser.parse_args()
+if args.v2:
+    from shots_v2 import SHOTS, TRIGGER
+else:
+    from shots import SHOTS, TRIGGER
+args.out = args.out or os.path.join(ROOT, "out", *(["v2"] if args.v2 else []), "keyframes")
 if not args.base and not args.lora:
     parser.error("--lora or --base")
 
@@ -106,7 +111,8 @@ def generate(spec, frames):
 os.makedirs(args.out, exist_ok=True)
 log_path = os.path.join(args.out, "prompts.json")
 log = json.load(open(log_path)) if os.path.exists(log_path) else {}
-# Text keyframes first: edits reference them (06_skycrane edits 08_rover).
+# Text keyframes first: edits reference them (06_skycrane edits 08_rover,
+# 4e_skycrane edits 5c_rover).
 order = sorted(SHOTS, key=lambda s: "edit_of" in s["key"])
 frames = {}
 for shot in order:

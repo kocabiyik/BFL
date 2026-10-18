@@ -8,7 +8,7 @@ Usage:
     blender -b --python blender/clip5/build_clip5.py
 
 Writes shot_5a.blend, shot_5b.blend and shot_5c.blend next to this script.
-Frame numbers are global to the film (clips.md): 5a = 2641-2784,
+Frame numbers are global to the film (docs/clips.md): 5a = 2641-2784,
 5b = 2785-2904, 5c = 2905-3120.
 """
 

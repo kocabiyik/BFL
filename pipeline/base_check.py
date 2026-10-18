@@ -21,7 +21,7 @@ import bfl
 OUT = os.path.join(bfl.ROOT, "out", "base_check")
 SEED = 1975
 
-# Film subjects that are NOT in the training set (clips.md).
+# Film subjects that are NOT in the training set (docs/clips.md).
 SUBJECTS = {
     "rover": "The Perseverance rover, a six-wheeled car-sized robot with a tall camera mast, sits alone on a rock-strewn crater floor on Mars, with a low ridge on the horizon and a dusty butterscotch sky.",
     "liftoff": "An Atlas V rocket lifts off from its launch pad at dawn, a bright flame and a huge billowing cloud of white exhaust spreading across the ground beside the steel launch tower.",

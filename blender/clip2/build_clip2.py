@@ -7,7 +7,7 @@ Usage:
     blender -b --python blender/clip2/build_clip2.py
 
 Writes shot_2a.blend ... shot_2d.blend next to this script. Frame numbers
-are global to the film (clips.md): 2a = 481-600, 2b = 601-720,
+are global to the film (docs/clips.md): 2a = 481-600, 2b = 601-720,
 2c = 721-864, 2d = 865-1080.
 """
 

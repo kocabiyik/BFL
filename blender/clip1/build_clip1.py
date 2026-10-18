@@ -8,7 +8,7 @@ Usage:
     blender -b --python blender/clip1/build_clip1.py
 
 Writes shot_1a.blend, shot_1b.blend and shot_1c.blend next to this script.
-Frame numbers are global to the film (clips.md): 1a = 1-144,
+Frame numbers are global to the film (docs/clips.md): 1a = 1-144,
 1b = 145-336, 1c = 337-480.
 """
 
@@ -23,7 +23,7 @@ from mathutils import Vector
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MARS_RADIUS = 10.0
-# Jezero on the globe, enlarged for readability (scale cheat, see clips.md).
+# Jezero on the globe, enlarged for readability (scale cheat, see docs/clips.md).
 CRATER_DIR = Vector((0.25, -1.0, 0.35)).normalized()
 CRATER_ANGLE = 0.06  # angular radius in radians -> ~0.6 units on the globe
 

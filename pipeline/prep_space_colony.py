@@ -2,7 +2,7 @@
 photo mats/borders, and resize to about 2048 px on the long side.
 
 Usage:
-    python pipeline/prep_space_colony.py
+    python pipeline/prep_space_colony.py [name ...]
 
 Reads data/space_colony/raw/, writes data/space_colony/train/<nasa_id>.jpg.
 Captions (<nasa_id>.txt) are written separately.
@@ -10,6 +10,7 @@ Captions (<nasa_id>.txt) are written separately.
 
 import glob
 import os
+import sys
 
 from PIL import Image, ImageChops
 
@@ -25,6 +26,16 @@ DROP = {
     "ARC-1975-AC75-1917",     # "USA" lettering
     "ARC-1977-AC77-0475-5",   # Venus overload; mostly sky
     "ARC-1977-AC77-0475-6",   # Venus overload
+    "ARC-1972-AC72-1279",     # multi-panel chart, not one picture
+    "ARC-1973-AC73-9345",     # allegorical figure, a different look
+}
+# One artist only: Rick Guidice. Don Davis's paintings and the uncredited
+# ones (same 1975 batch as Davis's AC75-1920) would blend two hands.
+DROP |= {
+    "ARC-1975-AC75-1886", "ARC-1975-AC75-1920", "ARC-1975-AC75-2621",
+    "ARC-1977-AC77-0475-9", "ARC-1977-AC77-0475-11", "ARC-1977-AC77-0475-12",
+    "ARC-1975-AC75-1918", "ARC-1975-AC75-1921", "ARC-1975-AC75-1923",
+    "ARC-1975-AC75-1924", "ARC-1976-AC76-0525",
 }
 # Manual crop boxes (fractions left, top, right, bottom) where the automatic
 # mat detection is not enough. Filled in after reviewing the contact sheet.
@@ -83,7 +94,7 @@ def trim_mat(im):
 os.makedirs(OUT, exist_ok=True)
 for path in sorted(glob.glob(os.path.join(RAW, "*.jpg"))):
     name = os.path.splitext(os.path.basename(path))[0]
-    if name in DROP:
+    if name in DROP or (sys.argv[1:] and name not in sys.argv[1:]):
         continue
     im = Image.open(path).convert("RGB")
     if name in MANUAL:

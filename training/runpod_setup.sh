@@ -22,15 +22,14 @@ if [ ! -d ai-toolkit ]; then
   python3 -m venv venv
   source venv/bin/activate
   pip install --upgrade pip
-  pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128   # cu128+: Blackwell (RTX PRO 6000)
   pip install -r requirements.txt
 else
   cd ai-toolkit
   source venv/bin/activate
 fi
 
-: "${HF_TOKEN:?export HF_TOKEN first (Klein Base download)}"
-huggingface-cli login --token "$HF_TOKEN"
+: "${HF_TOKEN:?export HF_TOKEN first (Klein Base download)}"   # hub reads it from env
 
 mkdir -p data/space_colony config
 rsync -a "$WORK/nsc7/train/" data/space_colony/train/

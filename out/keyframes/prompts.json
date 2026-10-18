@@ -1,0 +1,65 @@
+{
+ "01_mars_start": {
+  "prompt": "The planet Mars hangs in black space, half lit by the distant Sun, its rust-red surface marked by dark plains, a long canyon and a white polar cap. A thin pale haze glows along the curved edge of the planet, and faint stars fill the sky around it. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "02_liftoff_start": {
+  "prompt": "A tall white Atlas V rocket stands on its launch pad at dawn beside a steel launch tower, just at the moment of ignition, with a bright flame and the first billows of white exhaust spreading across the ground. The sky glows orange and violet behind it. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "03_cruise_start": {
+  "prompt": "A small disc-shaped spacecraft with solar panels drifts through dark space, a tiny blue Earth far behind it on the left and a small red Mars ahead on the right. A thin white line traces its curving path between the two planets across a starfield streaked with faint violet clouds. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "04_entry_start": {
+  "prompt": "A blunt cone-shaped capsule plunges into the thin atmosphere of Mars heat shield first, wrapped in a glowing orange and white plasma trail that streams out behind it. Far below, the red surface curves away under a dark violet sky. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "05_parachute_start": {
+  "prompt": "A cone-shaped spacecraft descends over a dusty red planet under a huge red and white striped parachute, high above craters and canyons, with the curved horizon below. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "07_control_start": {
+  "prompt": "Engineers in short-sleeved shirts sit at rows of consoles in a dim mission control room, staring at large screens that glow blue and orange. One woman in the front row leans forward with her hands pressed together. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "08_rover_start": {
+  "prompt": "The Perseverance rover, a six-wheeled car-sized robot with a tall camera mast, sits alone on a rock-strewn crater floor on Mars, with a low ridge on the horizon and a dusty butterscotch sky. Its long shadow stretches across the ground in the low evening sun. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "06_skycrane_start": {
+  "prompt": "Replace the rover\u2019s original ground position with the same six-wheeled rover from the first image suspended a few metres above the crater floor, preserving its exact white and gray body, six large black wheels, instrument housings, cables, raised mast, paired circular camera sensors, and dark equipment panels. Hang it securely from three taut vertical cables attached to a large rocket-powered descent stage overhead, with one cable at each side and a third centered above the body. Build the stage as a broad metallic spacecraft with angular panels, maneuvering nozzles, and three main engines. Its engines blast downward, producing bright exhaust cores and dense swirling clouds of orange-brown dust that curl around the rover and spread across the crater floor. Add turbulent dust plumes, airborne grit, and rolling eddies beneath the stage, while keeping the rover fully visible and unobstructed. Preserve the crater\u2019s original terrain and horizon, with the descent stage and cables integrated into the same warm, low-angle Martian light and perspective. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ },
+ "06_skycrane_end": {
+  "prompt": "Keep the same six-wheeled rover standing in the same position on the crater floor, preserving its white and gray body, six large black wheels, raised camera mast, twin circular sensors, instrument housings, and dark equipment panels. Change only its cable state: show the rover\u2019s exposed cable bundles just cut, with severed red, black, and orange wires hanging loose from the chassis, their cut ends sparking faintly and the cables trailing across the ground. Add the descent stage high in the distance above the crater rim, flying upward and away from the rover, tilted toward the upper frame-right sky. Preserve its recognizable metallic landing platform and engine assembly, but show it climbing with a bright orange-white rocket exhaust plume, a long turbulent trail of reddish settling dust, and small fragments of dust streaming behind it. Integrate the ascent plume into the existing dusty atmosphere while leaving the rover and crater terrain otherwise unchanged. nsc7 style",
+  "seed": 1975,
+  "model": "base",
+  "lora": "nsc7-style-lora_000001000.safetensors",
+  "scale": 1.0
+ }
+}

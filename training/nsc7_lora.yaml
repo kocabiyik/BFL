@@ -1,5 +1,5 @@
 # AI Toolkit config: style LoRA on FLUX 3 Image Klein Base.
-# 1970s NASA Ames space colony paintings (Guidice / Davis), trigger "nsc7 style".
+# 1970s NASA Ames paintings by Rick Guidice (one artist), trigger "nsc7 style".
 # Settings from docs/challenge.md; run with: python run.py config/nsc7_lora.yaml
 job: extension
 config:
@@ -17,7 +17,7 @@ config:
         save_every: 250
         max_step_saves_to_keep: 8        # keep every checkpoint; pick by samples
       datasets:
-        - folder_path: data/space_colony/train   # 30 images + .txt ending in "nsc7 style"
+        - folder_path: data/space_colony/train   # 22 images + .txt ending in "nsc7 style"
           caption_ext: txt
           resolution: [1024]
           cache_latents_to_disk: true
@@ -36,6 +36,7 @@ config:
         height: 576                        # film is 16:9
         seed: 1975
         walk_seed: false
+        neg: ""                            # default False crashes Klein's chat template
         guidance_scale: 3.5                # Klein Base settings
         sample_steps: 50
         prompts:                           # film subjects, none in the dataset

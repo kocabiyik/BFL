@@ -1,0 +1,48 @@
+# AI Toolkit config: style LoRA on FLUX 3 Image Klein Base.
+# 1970s NASA Ames space colony paintings (Guidice / Davis), trigger "nsc7 style".
+# Settings from docs/challenge.md; run with: python run.py config/nsc7_lora.yaml
+job: extension
+config:
+  name: nsc7-style-lora
+  process:
+    - type: diffusion_trainer
+      training_folder: output
+      device: cuda:0
+      network:
+        type: lora
+        linear: 32
+        linear_alpha: 32
+      save:
+        dtype: bf16
+        save_every: 250
+        max_step_saves_to_keep: 8        # keep every checkpoint; pick by samples
+      datasets:
+        - folder_path: data/space_colony/train   # 30 images + .txt ending in "nsc7 style"
+          caption_ext: txt
+          resolution: [1024]
+          cache_latents_to_disk: true
+      train:
+        batch_size: 1
+        steps: 2000
+        lr: 0.0001                         # 1e-4; plain decimal so YAML reads a float
+        optimizer: adamw
+        dtype: bf16
+      model:
+        name_or_path: black-forest-labs/flux-3-image-klein-base
+        arch: flux3
+      sample:
+        sample_every: 250
+        width: 1024
+        height: 576                        # film is 16:9
+        seed: 1975
+        walk_seed: false
+        guidance_scale: 3.5                # Klein Base settings
+        sample_steps: 50
+        prompts:                           # film subjects, none in the dataset
+          - "The Perseverance rover, a six-wheeled car-sized robot with a tall camera mast, sits alone on a rock-strewn crater floor on Mars, with a low ridge on the horizon and a dusty butterscotch sky. nsc7 style"
+          - "An Atlas V rocket lifts off from its launch pad at dawn, a bright flame and a huge billowing cloud of white exhaust spreading across the ground beside the steel launch tower. nsc7 style"
+          - "A cone-shaped spacecraft descends over a dusty red planet under a huge red and white striped parachute, high above craters and canyons, with the curved horizon below. nsc7 style"
+          - "A rocket-powered descent stage hovers above the Martian surface, lowering a six-wheeled rover on three cables while its thrusters kick up swirling dust. nsc7 style"
+          # Off-topic control: if this turns into a space colony, the LoRA is copying.
+          - "A lighthouse on a rocky cliff above a stormy sea at night. nsc7 style"
+          - "Engineers in short-sleeved shirts sit at rows of consoles in a dim mission control room, staring at large screens. nsc7 style"
